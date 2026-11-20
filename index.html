@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Muhammad Qasim — Applied AI Engineer</title>
-<meta name="description" content="Muhammad Qasim — Applied AI Engineer building agentic systems, retrieval over knowledge graphs and multimodal video. Founder of Clyflo; previously Codet AI.">
+<meta name="description" content="Muhammad Qasim — Applied AI Engineer building agentic, retrieval and multimodal AI systems, from research to working software. Founder of Clyflo; previously Codet AI.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#111113">
+<meta name="theme-color" content="#121417">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Muhammad Qasim — Applied AI Engineer">
-<meta property="og:description" content="Muhammad Qasim — Applied AI Engineer building agentic systems, retrieval over knowledge graphs and multimodal video. Founder of Clyflo; previously Codet AI.">
+<meta property="og:description" content="Muhammad Qasim — Applied AI Engineer building agentic, retrieval and multimodal AI systems, from research to working software. Founder of Clyflo; previously Codet AI.">
 <link rel="canonical" href="https://qasimmughal03.github.io/">
 <meta property="og:url" content="https://qasimmughal03.github.io/">
 <meta property="og:image" content="https://qasimmughal03.github.io/assets/og.jpg">
@@ -20,7 +20,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&family=Newsreader:opsz,wght@6..72,400&display=swap">
 <link rel="stylesheet" href="assets/main.css">
 </head>
 <body>
@@ -33,33 +33,74 @@
 </header>
 <main id="main">
 <div class="wrap">
-<section class="intro has-portrait">
-  <div>
-    <h1>Muhammad Qasim</h1>
-    <p class="lede">Applied AI engineer building agentic systems, retrieval over knowledge graphs, and multimodal video.</p>
-    <p>I founded and build <a href="work.html">Clyflo</a>, an AI-assisted video editing platform: its typed composition layer, agents, caption motion compiler, multimodal clip selection, reframing and production infrastructure. Before that, from December 2024 to May 2026, I worked at <a href="codet.html">Codet AI</a> on knowledge graphs, retrieval and reasoning for coding agents.</p>
-    <p>I work across research-driven methods, AI system architecture, and practical software engineering.</p>
-    <p class="links"><a href="work.html">See the Clyflo work</a><a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé (PDF)</a><a href="mailto:qasimmughal427@gmail.com">Email</a><a href="https://github.com/qasimmughal03">GitHub</a><a href="https://www.linkedin.com/in/muhammadqasim-914892211/">LinkedIn</a></p>
+<section class="hero" aria-labelledby="hero-name">
+  <div class="hero-text">
+    <p class="label">Applied AI Engineer · Karachi</p>
+    <h1 id="hero-name">Muhammad Qasim</h1>
+    <p class="statement">Building agentic, retrieval, and multimodal AI systems — from research to working software.</p>
+    <p class="secondary">I work across AI research, knowledge systems, agent architecture, multimodal intelligence, and production engineering.</p>
+    <p class="actions"><a class="btn btn-primary" href="work.html">View Work <span class="arr" aria-hidden="true">→</span></a><a class="btn" href="assets/Muhammad_Qasim_Resume_Final.pdf" download>Download Résumé</a></p>
   </div>
-  <figure class="portrait-sm"><picture><source srcset="assets/portrait.webp" type="image/webp"><img src="assets/portrait.jpg" width="480" height="600" alt="Portrait of Muhammad Qasim"></picture></figure>
+  <figure class="hero-portrait"><picture><source srcset="assets/portrait-hero.webp" type="image/webp"><img src="assets/portrait-hero.jpg" width="768" height="960" alt="Portrait of Muhammad Qasim" fetchpriority="high"></picture></figure>
 </section>
-<section class="row"><h2 class="row-label">Clyflo</h2><div class="row-body">
-  <p class="row-intro">How a long recording becomes an editable clip — and where I drew the line between what a model decides and what software guarantees. Choose a stage.</p>
-  <div class="sysmap" data-sysmap><div class="sysmap-stages" role="tablist" aria-label="Clyflo pipeline stages"><button type="button" role="tab" id="home-tab-ingest" aria-controls="home-panel-ingest" aria-selected="false" tabindex="-1">Ingest<span>upload · transcribe</span></button><button type="button" role="tab" id="home-tab-discover" aria-controls="home-panel-discover" aria-selected="false" tabindex="-1">Discover<span>Fast / Deep</span></button><button type="button" role="tab" id="home-tab-direct" aria-controls="home-panel-direct" aria-selected="true" tabindex="0">Direct<span>four agents</span></button><button type="button" role="tab" id="home-tab-author" aria-controls="home-panel-author" aria-selected="false" tabindex="-1">Author<span>one accepted history</span></button><button type="button" role="tab" id="home-tab-render" aria-controls="home-panel-render" aria-selected="false" tabindex="-1">Render<span>preview = export</span></button><button type="button" role="tab" id="home-tab-publish" aria-controls="home-panel-publish" aria-selected="false" tabindex="-1">Publish<span>per destination</span></button></div><div class="sysmap-panel" role="tabpanel" id="home-panel-ingest" aria-labelledby="home-tab-ingest"><h3>Ingest and transcription</h3><div class="sysmap-cols"><div><h4>Model decides</h4><p>No model decision. Speech recognition runs as its own durable job.</p></div><div><h4>Software guarantees</h4><p>Uploads are transcoded and transcribed as durable jobs. An agent that needs a transcript can defer, release its worker claim and resume when the transcription finishes.</p></div></div><a class="more" href="work-agents.html">Read the case study</a></div><div class="sysmap-panel" role="tabpanel" id="home-panel-discover" aria-labelledby="home-tab-discover"><h3>Multimodal clip selection</h3><div class="sysmap-cols"><div><h4>Model decides</h4><p>Fast: one model round discovers, constructs and scores clips. Deep: one multimodal judgement per shortlisted region.</p></div><div><h4>Software guarantees</h4><p>Transcript boundaries and cheap audio-visual cues propose regions; software merges and prunes them, routes optional analysis by speech density and cut rate, ranks deterministically, and reuses completed stages keyed by input hashes.</p></div></div><a class="more" href="work-discovery.html">Read the case study</a></div><div class="sysmap-panel" role="tabpanel" id="home-panel-direct" aria-labelledby="home-tab-direct"><h3>Specialist agents</h3><div class="sysmap-cols"><div><h4>Model decides</h4><p>Caption Director plans narrative roles and emphasis; Caption Design Agent writes motion themes; Music Agent chooses an eligible track and window, or none; RAVA Director picks subjects and framing.</p></div><div><h4>Software guarantees</h4><p>Typed tools with strict validation, step and call budgets, durable checkpoints, a motion compiler, perceptibility and diversity checks, and deterministic crop, timing and gain.</p></div></div><a class="more" href="work-agents.html">Read the case study</a></div><div class="sysmap-panel" role="tabpanel" id="home-panel-author" aria-labelledby="home-tab-author"><h3>Revision-safe authoring</h3><div class="sysmap-cols"><div><h4>Model decides</h4><p>Agents only propose typed edit commands.</p></div><div><h4>Software guarantees</h4><p>The authoring gateway checks the expected revision and stable command ID, locks resources, validates pinned dependencies and writes revision and receipt atomically. Stale edits are rejected; an identical retry returns the original receipt.</p></div></div><a class="more" href="work-platform.html">Read the case study</a></div><div class="sysmap-panel" role="tabpanel" id="home-panel-render" aria-labelledby="home-tab-render"><h3>Preview and export</h3><div class="sysmap-cols"><div><h4>Model decides</h4><p>No model decision.</p></div><div><h4>Software guarantees</h4><p>Caption motion is evaluated in TypeScript for the browser preview and in Python for native export, held to the same results by a shared fixture protocol (within 1e−6). Geometry checks reject motion that leaves the frame.</p></div></div><a class="more" href="work-captions.html">Read the case study</a></div><div class="sysmap-panel" role="tabpanel" id="home-panel-publish" aria-labelledby="home-tab-publish"><h3>Publishing and integrations</h3><div class="sysmap-cols"><div><h4>Model decides</h4><p>No model decision.</p></div><div><h4>Software guarantees</h4><p>An immutable publishing intent fans out into one job per destination with its own state. An uncertain upload is marked ambiguous and reconciled instead of retried blindly. OAuth connections, capability checks, history import and analytics per provider.</p></div></div><a class="more" href="work-platform.html">Read the case study</a></div><p class="sysmap-base"><b>Underneath every stage:</b> a typed composition graph with versioned schemas and pinned evidence (<a href="work-foundation.html">read more</a>), a PostgreSQL job queue (atomic claims with <code>FOR UPDATE SKIP LOCKED</code>, leases, heartbeats), separate AWS ECS worker pools for general and reframing work, metered model routes, and a CI release pipeline with migrations, readiness and smoke checks.</p></div></div></section><section class="row"><h2 class="row-label">Case studies</h2><div class="row-body"><ol class="list"><li><a class="item" href="work-foundation.html"><span class="item-title" style="view-transition-name:case-foundation">A typed foundation for media, perception and composition</span><span class="item-desc">The composition layer: a typed property graph with versioned schemas, three-valued validation, pinned evidence and exact time — the model agents, editor and renderer share.</span></a></li><li><a class="item" href="work-agents.html"><span class="item-title" style="view-transition-name:case-agents">Agents inside an editable media system</span><span class="item-desc">Four specialist agents — caption direction, caption design, music, reframing — with bounded tools, durable checkpoints and recovery that never re-asks the model.</span></a></li><li><a class="item" href="work-captions.html"><span class="item-title" style="view-transition-name:case-captions">A language and compiler for caption motion</span><span class="item-desc">A typed motion language, a compiler into the editor’s caption engine, a repair loop for generated themes, and one motion model shared by preview and export.</span></a></li><li><a class="item" href="work-discovery.html"><span class="item-title" style="view-transition-name:case-discovery">Multimodal selection and reframing</span><span class="item-desc">Fast and Deep clip selection that controls inference depth, and reframing where a multimodal model chooses subjects and code computes the camera.</span></a></li><li><a class="item" href="work-platform.html"><span class="item-title" style="view-transition-name:case-platform">Authoring, orchestration and infrastructure</span><span class="item-desc">One accepted revision history for human and AI edits, durable job execution on AWS, metered model operations, and publishing that is safe to retry.</span></a></li></ol></div></section><section class="row"><h2 class="row-label">Experience</h2><div class="row-body">
-  <ol class="timeline">
-    <li><span class="when">2026 –</span><div><b>Clyflo</b> · Founder &amp; AI Engineer<p>Agents, caption compiler, multimodal selection and reframing, platform and infrastructure.</p></div></li>
-    <li><span class="when">2024 – 2026</span><div><b><a href="codet.html">Codet AI</a></b> · AI Software Engineer<p>Knowledge graphs, hybrid retrieval and validated workflows for coding agents.</p></div></li>
-    <li><span class="when">2024</span><div><b>NCP AITeC</b> · Quantum Computing Intern<p>Quantum Neural Networks and quantum SVMs in Qiskit.</p></div></li>
-    <li><span class="when">2021 – 2025</span><div><b>FAST-NUCES</b> · B.S. Computer Science<p>Final-year project in medical-image anomaly detection; teaching assistant.</p></div></li>
-  </ol>
-  <p><a class="more" href="experience.html">Full experience</a></p></div></section><section class="row"><h2 class="row-label">Research &amp; engineering</h2><div class="row-body">
-  <ol class="list compact">
-    <li><a class="item" href="research.html#enterprise-rag"><span class="item-title">Enterprise RAG evaluation</span><span class="item-desc">PostgreSQL-native hybrid retrieval, evaluated on BEIR SciFact with significance tests.</span></a></li>
-    <li><a class="item" href="research.html#gql-core"><span class="item-title">GQL-Core</span><span class="item-desc">Embedded property-graph engine with typed query plans and ontology inference.</span></a></li>
-    <li><a class="item" href="research.html#gitdoc"><span class="item-title">GitDoc</span><span class="item-desc">Graph-first code intelligence across five languages.</span></a></li>
-  </ol>
-  <p><a class="more" href="research.html">All research and projects</a></p></div></section><section class="row"><h2 class="row-label">Contact</h2><div class="row-body">
-  <p>I’m interested in applied AI, agentic systems and AI research engineering roles. The best way to reach me is <a href="mailto:qasimmughal427@gmail.com">email</a>, or download my <a href="assets/Muhammad_Qasim_Resume_Final.pdf">résumé</a>.</p></div></section></div>
+</div>
+
+<section class="scene" aria-labelledby="clyflo-title" data-reveal>
+  <div class="wrap">
+    <div class="scene-head">
+      <p class="label">01 — Flagship work · Founder &amp; AI Engineer · 2026–present</p>
+      <h2 class="scene-title" id="clyflo-title">Clyflo</h2>
+      <p class="scene-dek">An AI-assisted video creation and editing platform — multimodal content selection, editing agents, intelligent reframing, caption systems, publishing integrations and production infrastructure. <a href="work.html">The full engineering story</a>.</p>
+    </div>
+    <div class="showcase" data-showcase><div class="showcase-tabs" role="tablist" aria-label="Clyflo engineering areas"><button type="button" role="tab" id="sc-tab-captions" aria-controls="sc-pane-captions" aria-selected="true"><span>01</span>Agentic Editing &amp; Captions</button><button type="button" role="tab" id="sc-tab-discovery" aria-controls="sc-pane-discovery" aria-selected="false"><span>02</span>Multimodal Discovery &amp; Reframing</button><button type="button" role="tab" id="sc-tab-platform" aria-controls="sc-pane-platform" aria-selected="false"><span>03</span>Platform Architecture &amp; Infrastructure</button></div><div class="showcase-pane" id="sc-pane-captions" aria-labelledby="sc-tab-captions"><div class="showcase-frame"><div class="titlecard"><div class="titlecard-top"><img src="assets/clyflo-mark.png" alt="" width="28" height="28"><span>Clyflo</span></div><div class="titlecard-main"><p class="label">Chapter 01</p><h3>Agentic Editing &amp; Captions</h3></div><p class="titlecard-foot">Title card · product footage forthcoming</p></div></div><div class="showcase-panel"><div><p>AI-assisted editing, structured operations, caption generation and controlled media composition. Specialist agents act only through typed, validated tools and recover from interruptions without re-asking the model; a declarative motion language and compiler turn a creative brief into editable caption styles.</p><p class="showcase-stack">Bounded agents · durable checkpoints · MotionDSL compiler · preview/export parity</p></div><a class="arrow" href="work-captions.html">Read: a language and compiler for caption motion</a></div></div><div class="showcase-pane" id="sc-pane-discovery" aria-labelledby="sc-tab-discovery"><div class="showcase-frame"><div class="titlecard"><div class="titlecard-top"><img src="assets/clyflo-mark.png" alt="" width="28" height="28"><span>Clyflo</span></div><div class="titlecard-main"><p class="label">Chapter 02</p><h3>Multimodal Discovery &amp; Reframing</h3></div><p class="titlecard-foot">Title card · product footage forthcoming</p></div></div><div class="showcase-panel"><div><p>Video understanding, clip selection, computer vision, subject tracking and intelligent reframing. Fast and Deep selection control how much multimodal inference each source receives; for reframing, a multimodal model chooses who matters and deterministic code computes the editable camera path.</p><p class="showcase-stack">Fast / Deep selection · face and speaker tracking · RAVA director · evaluation harness</p></div><a class="arrow" href="work-discovery.html">Read: multimodal selection and reframing</a></div></div><div class="showcase-pane" id="sc-pane-platform" aria-labelledby="sc-tab-platform"><div class="showcase-frame"><div class="titlecard"><div class="titlecard-top"><img src="assets/clyflo-mark.png" alt="" width="28" height="28"><span>Clyflo</span></div><div class="titlecard-main"><p class="label">Chapter 03</p><h3>Platform Architecture &amp; Infrastructure</h3></div><p class="titlecard-foot">Title card · product footage forthcoming</p></div></div><div class="showcase-panel"><div><p>Backend architecture, asynchronous processing, model orchestration, integrations, persistence and deployment — built on a typed composition graph, one revision-checked authoring gateway for human and AI edits, and durable PostgreSQL-backed jobs on AWS.</p><p class="showcase-stack">Typed composition graph · authoring gateway · SKIP LOCKED queues · ECS · publishing</p></div><a class="arrow" href="work-platform.html">Read: authoring, orchestration and infrastructure</a></div></div></div>
+  </div>
+</section>
+
+<section class="scene" aria-labelledby="codet-title" data-reveal>
+  <div class="wrap editorial">
+    <div class="editorial-meta">
+      <p class="label">02 — Professional AI engineering</p>
+      <h2 class="scene-title" id="codet-title" style="margin-top:18px">Codet AI</h2>
+      <p>AI Software Engineer · Dec 2024 – May 2026 · Karachi</p>
+    </div>
+    <div class="editorial-body">
+      <p>I worked on the knowledge and reasoning layer behind AI coding agents: how a codebase and its domain are represented, how an agent finds the context a task needs, and how its output is checked before it is trusted.</p>
+      <ol class="themes">
+        <li><b>Coding agents and software engineering</b><p>Stateful agent workflows with repository-level code understanding, AST analysis, requirements-to-Gherkin validation and diagnostic repair.</p></li>
+        <li><b>Knowledge representation and retrieval</b><p>Neurosymbolic knowledge graphs modelled on relational storage, with lexical, semantic, graph-based and hybrid retrieval, and graph embeddings.</p></li>
+        <li><b>Reasoning and agent learning</b><p>Logical constraints and validation, research-driven retrieval and reasoning methods, and skill acquisition from agent execution.</p></li>
+      </ol>
+      <a class="arrow" href="codet.html">Read the technical account</a>
+    </div>
+  </div>
+</section>
+
+<section class="scene" aria-labelledby="research-title" data-reveal>
+  <div class="wrap">
+    <div class="scene-head">
+      <p class="label">03 — Research &amp; independent engineering</p>
+      <h2 class="scene-title" id="research-title">How the interests developed</h2>
+      <p class="scene-dek">From quantum machine learning to graph querying and retrieval evaluation — independent work that informs the products.</p>
+    </div>
+    <ol class="index">
+      <li><span class="when">2026 · Independent</span><h3>GQL-Core</h3><p>An embedded property-graph engine with a Cypher-inspired query language, typed query plans for LLM agents, and ontology inference with provenance.</p><span class="go"><a href="research.html#gql-core">Details</a></span></li>
+      <li><span class="when">Independent</span><h3>GitDoc</h3><p>Graph-first code intelligence that resolves symbols, imports and cross-file relationships across five languages.</p><span class="go"><a href="research.html#gitdoc">Details</a></span></li>
+      <li><span class="when">2026 · Independent</span><h3>Retrieval experiments</h3><p>PostgreSQL-native hybrid retrieval evaluated on BEIR SciFact with paired significance tests, including where reranking did and did not help.</p><span class="go"><a href="research.html#enterprise-rag">Details</a></span></li>
+      <li><span class="when">2026 · Public code</span><h3>Voice AI patient registration</h3><p>A deployed phone agent whose tool calls share the REST API’s validation layer.</p><span class="go"><a href="https://github.com/qasimmughal03/voice-ai-patient-registration">Source</a></span></li>
+      <li><span class="when">2024 · NCP AITeC</span><h3>Quantum engineering internship</h3><p>Quantum Neural Networks and quantum SVM experiments in Qiskit — where an interest in algorithmic representation and experimental discipline began.</p><span class="go"><a href="experience.html#quantum">Details</a></span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <p class="label">04 — Contact</p>
+    <h2 id="contact-title" style="margin-top:18px">Open to applied AI engineering roles, research collaborations and building AI products.</h2>
+    <p>Email is the best way to reach me. My résumé has the full history.</p>
+    <p class="contact-links"><a href="mailto:qasimmughal427@gmail.com">Email</a><a href="https://github.com/qasimmughal03">GitHub</a><a href="https://www.linkedin.com/in/muhammadqasim-914892211/">LinkedIn</a><a href="assets/Muhammad_Qasim_Resume_Final.pdf" download>Download Résumé</a></p>
+  </div>
+</section>
+
 </main>
 <footer class="site-footer">
   <div class="wrap footer-row">
