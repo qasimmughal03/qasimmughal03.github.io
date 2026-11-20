@@ -81,14 +81,15 @@ a:hover { text-decoration-color: var(--accent); }
 .scene-title { font: 400 clamp(40px, 5vw, 64px)/1.02 var(--serif); letter-spacing: -.02em; color: var(--text); }
 .scene-dek { max-width: 600px; font-size: 18px; color: var(--body); }
 
-/* Scene 01 — hero */
-.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 72px); align-items: center; padding-block: clamp(40px, 6vw, 80px) clamp(40px, 5vw, 72px); }
-.hero h1 { margin-top: 20px; font: 600 clamp(48px, 6.6vw, 88px)/.98 var(--sans); letter-spacing: -.04em; color: var(--text); }
-.hero .statement { margin-top: 28px; max-width: 30ch; font: 400 clamp(21px, 2vw, 26px)/1.35 var(--sans); letter-spacing: -.015em; color: var(--text); }
-.hero .secondary { margin-top: 16px; max-width: 48ch; color: var(--body); }
-.hero-portrait { position: relative; margin: 0; justify-self: end; width: min(100%, 620px); aspect-ratio: 1 / 1;
-  -webkit-mask-image: radial-gradient(closest-side at 52% 50%, #000 58%, rgba(0,0,0,.6) 76%, transparent 100%); mask-image: radial-gradient(closest-side at 52% 50%, #000 58%, rgba(0,0,0,.6) 76%, transparent 100%); }
-.hero-portrait img { width: 100%; height: 100%; object-fit: cover; transform: translate3d(var(--px, 0px), var(--py, 0px), 0) scale(1.02); transition: transform .9s var(--ease); }
+/* Scene 01 — hero: text and a composed 4:5 photograph, roughly 55 / 45 */
+.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center;
+  min-height: min(calc(100svh - 74px), 820px); padding-block: clamp(40px, 6vw, 80px); }
+.hero-text { max-width: 600px; }
+.hero h1 { margin-top: 18px; font: 600 clamp(52px, 6.4vw, 88px)/.96 var(--sans); letter-spacing: -.045em; color: var(--text); }
+.hero .statement { margin-top: 28px; max-width: 24ch; font: 400 clamp(21px, 1.9vw, 25px)/1.38 var(--sans); letter-spacing: -.015em; color: #d9d6cf; }
+.hero .actions { margin-top: 40px; }
+.hero-portrait { position: relative; margin: 0; justify-self: end; width: 100%; max-width: 500px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: var(--bg-2); }
+.hero-portrait img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Scene 02 — Clyflo showcase */
 .showcase-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); }
@@ -255,15 +256,13 @@ details > div { padding-bottom: 16px; }
 
 /* ============================ Motion (non-essential) ============================ */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-portrait { animation: fade-in 1.6s var(--ease) .1s both; }
-  .hero-portrait img { animation: settle 2.4s var(--ease) .1s both; }
+  .hero-portrait { animation: portrait-in .8s var(--ease) .15s both; }
   .hero-text > * { animation: rise .6s var(--ease) both; }
   .hero-text > :nth-child(2) { animation-delay: .06s; }
   .hero-text > :nth-child(3) { animation-delay: .12s; }
   .hero-text > :nth-child(4) { animation-delay: .18s; }
   .hero-text > :nth-child(5) { animation-delay: .24s; }
-  @keyframes fade-in { from { opacity: 0; } }
-  @keyframes settle { from { transform: scale(1.1); } }
+  @keyframes portrait-in { from { opacity: 0; transform: translateY(14px); } }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
   .reveal-pending { opacity: 0; transform: translateY(16px); }
   .reveal-in { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -283,7 +282,9 @@ details > div { padding-bottom: 16px; }
 }
 @media (max-width: 860px) {
   .hero { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 0; }
-  .hero-portrait { order: -1; justify-self: center; width: min(100%, 520px); margin: -8px 0 -40px; }
+  .hero { min-height: 0; gap: 28px; }
+  .hero-portrait { order: -1; justify-self: stretch; max-width: none; aspect-ratio: 5 / 4; }
+  .hero-portrait img { object-position: 50% 30%; }
   .hero-text { position: relative; z-index: 1; }
   .hero h1 { margin-top: 0; }
   .scene-head, .editorial, .showcase-panel { grid-template-columns: minmax(0, 1fr); }

@@ -27,15 +27,6 @@
     select(0, false);
   });
 
-  // Portrait depth: a few pixels of drift toward the pointer (desktop with a mouse only).
-  const portrait = document.querySelector('.hero-portrait img');
-  if (portrait && matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
-    addEventListener('pointermove', e => {
-      const x = (e.clientX / innerWidth - .5) * -10, y = (e.clientY / innerHeight - .5) * -8;
-      portrait.style.setProperty('--px', x.toFixed(1) + 'px'); portrait.style.setProperty('--py', y.toFixed(1) + 'px');
-    }, { passive: true });
-  }
-
   // Sparing section reveals: only major sections that start below the fold.
   if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
   const io = new IntersectionObserver(entries => entries.forEach(e => {
