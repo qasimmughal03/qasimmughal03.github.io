@@ -1,5 +1,13 @@
 /* Progressive enhancement only: every piece of content is visible without this file. */
 (() => {
+  document.documentElement.classList.add('js');
+  // Compact mobile menu
+  const mb = document.querySelector('[data-menu]');
+  if (mb) {
+    const set = o => { mb.setAttribute('aria-expanded', String(o)); mb.textContent = o ? 'Close' : 'Menu'; document.documentElement.classList.toggle('menu-open', o); };
+    mb.addEventListener('click', () => set(mb.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && mb.getAttribute('aria-expanded') === 'true') { set(false); mb.focus(); } });
+  }
   // Clyflo showcase: one tab list over three panes (frame + description + case-study link).
   document.querySelectorAll('[data-showcase]').forEach(root => {
     const tabs = [...root.querySelectorAll('[role="tab"]')];

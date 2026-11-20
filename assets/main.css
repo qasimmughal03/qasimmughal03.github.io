@@ -81,16 +81,6 @@ a:hover { text-decoration-color: var(--accent); }
 .scene-title { font: 400 clamp(40px, 5vw, 64px)/1.02 var(--serif); letter-spacing: -.02em; color: var(--text); }
 .scene-dek { max-width: 600px; font-size: 18px; color: var(--body); }
 
-/* Scene 01 — hero: text and a composed 4:5 photograph, roughly 55 / 45 */
-.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(40px, 6vw, 96px); align-items: center;
-  min-height: min(calc(100svh - 74px), 820px); padding-block: clamp(40px, 6vw, 80px); }
-.hero-text { max-width: 600px; }
-.hero h1 { margin-top: 18px; font: 600 clamp(52px, 6.4vw, 88px)/.96 var(--sans); letter-spacing: -.045em; color: var(--text); }
-.hero .statement { margin-top: 28px; max-width: 24ch; font: 400 clamp(21px, 1.9vw, 25px)/1.38 var(--sans); letter-spacing: -.015em; color: #d9d6cf; }
-.hero .actions { margin-top: 40px; }
-.hero-portrait { position: relative; margin: 0; justify-self: end; width: 100%; max-width: 500px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: var(--bg-2); }
-.hero-portrait img { width: 100%; height: 100%; object-fit: cover; }
-
 /* Scene 02 — Clyflo showcase */
 .showcase-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); }
 .showcase-frame video, .showcase-frame img.media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -256,13 +246,6 @@ details > div { padding-bottom: 16px; }
 
 /* ============================ Motion (non-essential) ============================ */
 @media (prefers-reduced-motion: no-preference) {
-  .hero-portrait { animation: portrait-in .8s var(--ease) .15s both; }
-  .hero-text > * { animation: rise .6s var(--ease) both; }
-  .hero-text > :nth-child(2) { animation-delay: .06s; }
-  .hero-text > :nth-child(3) { animation-delay: .12s; }
-  .hero-text > :nth-child(4) { animation-delay: .18s; }
-  .hero-text > :nth-child(5) { animation-delay: .24s; }
-  @keyframes portrait-in { from { opacity: 0; transform: translateY(14px); } }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
   .reveal-pending { opacity: 0; transform: translateY(16px); }
   .reveal-in { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -281,12 +264,6 @@ details > div { padding-bottom: 16px; }
   .theme-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }
 @media (max-width: 860px) {
-  .hero { grid-template-columns: minmax(0, 1fr); gap: 24px; padding-top: 0; }
-  .hero { min-height: 0; gap: 28px; }
-  .hero-portrait { order: -1; justify-self: stretch; max-width: none; aspect-ratio: 5 / 4; }
-  .hero-portrait img { object-position: 50% 30%; }
-  .hero-text { position: relative; z-index: 1; }
-  .hero h1 { margin-top: 0; }
   .scene-head, .editorial, .showcase-panel { grid-template-columns: minmax(0, 1fr); }
   .scene-head { gap: 16px; }
   .showcase-panel .arrow { justify-self: start; }
@@ -295,8 +272,6 @@ details > div { padding-bottom: 16px; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
-  .hero h1 { font-size: clamp(40px, 12vw, 52px); }
-  .hero .actions .btn { flex: 1 1 auto; justify-content: center; }
   .js-showcase .showcase-tabs { grid-template-columns: minmax(0, 1fr); }
   .showcase-tabs button { padding: 14px 0 14px 14px; border-top: 0; border-bottom: 1px solid var(--line-soft); margin-top: 0; }
   .showcase-tabs button[aria-selected="true"] { box-shadow: inset 2px 0 0 var(--accent); }
@@ -314,3 +289,53 @@ details > div { padding-bottom: 16px; }
 
 /* never let the hero portrait cause sideways scrolling */
 body { overflow-x: clip; }
+
+/* ======================= Opening — title sequence (typography only) ======================= */
+.opening { padding-block: clamp(72px, 9vw, 128px) clamp(56px, 6vw, 88px); }
+.opening-name { font: 600 clamp(44px, 9.7vw, 142px)/.9 var(--sans); letter-spacing: -.04em; text-transform: uppercase; color: var(--text); white-space: nowrap; }
+.opening-role { margin-top: clamp(14px, 1.6vw, 24px); font: 400 clamp(20px, 2.1vw, 30px)/1.2 var(--sans); letter-spacing: -.02em; color: var(--muted); }
+.opening-foot { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: start;
+  margin-top: clamp(48px, 5.5vw, 80px); padding-top: 28px; border-top: 1px solid var(--line); }
+.opening-intro { grid-column: 1 / span 6; }
+.opening-statement { max-width: 40ch; font: 400 clamp(18px, 1.45vw, 20px)/1.55 var(--sans); color: var(--body); }
+.opening-actions { display: flex; gap: 10px; margin-top: 28px; }
+.opening-index { grid-column: 9 / -1; display: grid; gap: 14px; font-size: 15px; }
+.opening-index div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; }
+.opening-index dt { font: 500 13px/1.7 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.opening-index dd { color: var(--text); }
+
+/* Clyflo directly follows the opening: wide frame, quieter header */
+.scene-clyflo { padding-top: clamp(48px, 6vw, 80px); }
+.wrap-wide { width: min(1440px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+.scene-clyflo .showcase-panel, .scene-clyflo .showcase-tabs { width: min(var(--wrap), 100%); margin-inline: auto; }
+.scene-title, .contact h2 { font-family: var(--sans); font-weight: 600; letter-spacing: -.035em; }
+.titlecard-main h3 { font: 600 clamp(26px, 3.6vw, 52px)/1.05 var(--sans); letter-spacing: -.03em; }
+
+/* Header: compact menu on small screens */
+.menu-btn { display: none; font: 500 14px var(--sans); color: var(--text); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+@media (max-width: 640px) {
+  .header-row { flex-wrap: nowrap; padding-block: 16px; position: relative; }
+  .js .menu-btn { display: inline-block; }
+  .js .site-header nav { display: none; position: absolute; top: 100%; left: 0; right: 0; z-index: 20; flex-direction: column; gap: 0;
+    padding: 6px 0 14px; background: var(--bg); border-bottom: 1px solid var(--line-soft); }
+  .js.menu-open .site-header nav { display: flex; }
+  .js .site-header nav a { padding: 12px 0; font-size: 17px; border-top: 1px solid var(--line-soft); }
+  .opening { padding-block: 44px 40px; }
+  .opening-name { font-size: clamp(40px, 12.4vw, 56px); line-height: .95; white-space: normal; }
+  .opening-foot { display: block; margin-top: 32px; padding-top: 20px; }
+  .opening-actions { margin-top: 24px; }
+  .opening-index { display: none; }
+  .opening-actions .btn { flex: 1 1 0; justify-content: center; white-space: nowrap; }
+  .scene-clyflo { padding-top: 40px; }
+}
+
+/* About portrait */
+.about-portrait { margin: 0 0 8px; width: min(100%, 260px); aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: var(--bg-2); }
+.about-portrait img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .opening .wrap > * { animation: rise .7s var(--ease) both; }
+  .opening-role { animation-delay: .08s !important; }
+  .opening-foot { animation-delay: .18s !important; }
+}
+@media (max-width: 860px) { .showcase-panel .arrow { display: inline; } }
