@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Codet AI — Muhammad Qasim</title>
+<meta name="description" content="Codet AI technical experience: AI coding agents, knowledge graphs and hybrid retrieval, neurosymbolic reasoning and agent learning — contributions, engineering reasoning and related research.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#111113">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Codet AI — Muhammad Qasim">
+<meta property="og:description" content="Codet AI technical experience: AI coding agents, knowledge graphs and hybrid retrieval, neurosymbolic reasoning and agent learning — contributions, engineering reasoning and related research.">
+<link rel="canonical" href="https://qasimmughal03.github.io/codet.html">
+<meta property="og:url" content="https://qasimmughal03.github.io/codet.html">
+<meta property="og:image" content="https://qasimmughal03.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="name" href="index.html">Muhammad Qasim</a>
+    <nav aria-label="Main"><a href="work.html">Work</a><a href="experience.html" aria-current="page">Experience</a><a href="research.html">Research</a><a href="about.html">About</a><a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+  <p class="eyebrow"><a href="experience.html">Experience</a> · Codet AI</p>
+  <h1>Codet AI</h1>
+  <p class="lede">Knowledge representation, retrieval and reasoning for AI coding agents.</p>
+  <dl class="facts">
+    <div><dt>Role</dt><dd>AI Software Engineer</dd></div>
+    <div><dt>Period</dt><dd>Dec 2024 – May 2026</dd></div>
+    <div><dt>Progression</dt><dd>AI Engineering Intern → AI Software Engineer (Jun 2025)</dd></div>
+    <div><dt>Company</dt><dd><a href="https://codet.ai/">codet.ai</a> · Karachi</dd></div>
+  </dl>
+</header>
+<section class="row"><h2 class="row-label">Overview</h2><div class="row-body">
+  <p>At Codet AI I worked on the layer behind its software-engineering agents that decides what they know and how they use it: how a codebase and its domain are represented, how an agent finds the context a task needs, and how its output is checked before it is trusted.</p>
+  <p>The implementation belongs to the company, so this page describes the problems, my contributions and the reasoning behind them, without proprietary code or architecture. Each item is marked <span class="tag tag-built">Built</span> where I implemented it, or <span class="tag tag-explored">Explored</span> where I prototyped, studied or compared an approach.</p></div></section><section class="row"><h2 class="row-label">My contributions</h2><div class="row-body">
+  <ul class="contrib">
+    <li><span class="tag tag-built">Built</span> Owned the ontology-backed knowledge-representation layer: typed entities, relationships and constraints for code and domain knowledge, stored on relational infrastructure (YugabyteDB).</li>
+    <li><span class="tag tag-built">Built</span> An EBNF-defined graph-query language and validation of LLM-generated graph structures with datatype, cardinality, relationship and OCL-style rules.</li>
+    <li><span class="tag tag-built">Built</span> Hybrid context retrieval combining lexical and keyword matching, semantic similarity, multi-hop graph traversal, PageRank-style scoring and fused ranking.</li>
+    <li><span class="tag tag-built">Built</span> Stateful LangGraph coding-agent workflows: ts-morph/AST repository analysis, repository code graphs, requirements-to-Gherkin test generation, compiler validation, guarded execution and diagnostic repair loops.</li>
+    <li><span class="tag tag-explored">Explored</span> Weisfeiler–Lehman and Poincaré graph embeddings; HippoRAG- and AnchorRAG-style graph retrieval; capturing agent execution events and turning recurring patterns into reusable skills.</li>
+  </ul></div></section>
+<section class="theme" aria-labelledby="theme-a">
+  <p class="kicker">Theme A</p>
+  <h2 id="theme-a" class="display-3">AI coding agents</h2>
+  <div class="theme-grid">
+    <div><h3>The problem</h3><p>A coding agent has to change a real codebase: understand where new code belongs, act through tools, and produce changes that compile and meet the requirement. A language model alone guesses at all three.</p></div>
+    <div><h3>What I worked on</h3><p><span class="tag tag-built">Built</span> Stateful agent workflows in LangGraph, where each step has explicit state and permitted transitions. Repository context comes from AST analysis with ts-morph — symbols, imports and dependencies — organised as a code graph rather than raw text. Requirements are turned into Gherkin scenarios, so "done" is an executable behaviour, not a judgement. Changes pass compiler validation and guarded execution; failures produce diagnostics that feed a bounded repair loop.</p>
+    <p><span class="tag tag-explored">Explored</span> Recording agent execution events and extracting recurring successful patterns into reusable skills, so the agent does not rediscover the same procedure each time.</p></div>
+    <div><h3>Engineering reasoning</h3><p>Split responsibilities by reliability: the model plans and writes; deterministic tools — parser, compiler, tests — supply ground truth. Validation turns agent output from plausible into falsifiable, and finite-state execution policies keep a long-running agent from wandering.</p></div>
+  </div>
+  <details><summary>Technical detail: why BDD scenarios for agents</summary><div><p>Gherkin (Given/When/Then) gives a requirement a structured, human-readable form that can also be executed. For an agent, that turns an ambiguous instruction into acceptance criteria it can test against before reporting success — and gives a reviewer the same criteria to read.</p></div></details>
+</section>
+
+<section class="theme" aria-labelledby="theme-b">
+  <p class="kicker">Theme B</p>
+  <h2 id="theme-b" class="display-3">Knowledge representation and retrieval</h2>
+  <div class="theme-grid">
+    <div><h3>The problem</h3><p>The context an agent needs is spread across files and concepts, connected by relationships — calls, imports, inheritance, domain rules — that a nearest-neighbour vector search does not preserve. And identifiers such as function names are often out of vocabulary for embedding models.</p></div>
+    <div><h3>What I worked on</h3><p><span class="tag tag-built">Built</span> An ontology-backed knowledge graph: typed nodes, edges and constraints, modelled on a relational database, with an EBNF-defined query language for structured operations (Boolean predicates, comparisons, relationship traversal). Retrieval combined signals, each covering a different failure mode: lexical and keyword matching for exact identifiers and out-of-vocabulary terms; semantic similarity for paraphrased intent; graph traversal for multi-hop relationships; PageRank-style scores for structural importance; and fused ranking to merge them.</p>
+    <p><span class="tag tag-explored">Explored</span> Graph embeddings: Weisfeiler–Lehman representations for structural similarity, and Poincaré (hyperbolic) embeddings for hierarchies such as package and type trees.</p></div>
+    <div><h3>Engineering reasoning</h3><p>No single retrieval signal is sufficient; the useful question is which signal is reliable for which kind of request, and how to combine them. Keeping graph data in relational storage keeps one transactional store and familiar operations, at the cost of expressing traversal through queries — one reason a typed query language and structured operations were worth building.</p></div>
+  </div>
+  <details><summary>Technical detail: what each graph-embedding method contributes</summary><div><p><b>Weisfeiler–Lehman</b> refines each node's label using its neighbours' labels over several rounds, so nodes in the same structural role end up with similar signatures even when their names differ. <b>Poincaré embeddings</b> place nodes in hyperbolic space, where distance from the centre naturally encodes depth in a hierarchy, so tree-like structures embed with low distortion in few dimensions.</p></div></details>
+</section>
+
+<section class="theme" aria-labelledby="theme-c">
+  <p class="kicker">Theme C</p>
+  <h2 id="theme-c" class="display-3">Reasoning and agent learning</h2>
+  <div class="theme-grid">
+    <div><h3>The problem</h3><p>LLM-only reasoning has no guarantee of consistency: a model can produce a graph that violates the ontology, or answer a multi-hop question from the wrong starting entity. It also forgets how it solved similar problems before.</p></div>
+    <div><h3>What I worked on</h3><p><span class="tag tag-built">Built</span> Symbolic constraints around neural components: LLM-generated graph structures are validated against datatype, cardinality, relationship and OCL-style rules before agents use them, and structured queries go through a grammar rather than free text.</p>
+    <p><span class="tag tag-explored">Explored</span> Graph-based context organisation informed by HippoRAG and AnchorRAG — propagating relevance from query-linked entities, and choosing good anchor entities when the query does not name them exactly. Agent memory built from execution history, with recurring procedures abstracted into reusable skills.</p></div>
+    <div><h3>Engineering reasoning</h3><p>Use the model for flexible interpretation and the symbolic layer for guarantees. Constraints catch malformed knowledge at the boundary instead of letting it surface later as a confident wrong answer.</p></div>
+  </div>
+</section>
+<section class="row"><h2 class="row-label">Selected problems</h2><div class="row-body">
+  <dl class="qa">
+    <div><dt>How does an agent find context spread across many files?</dt><dd>Combine exact-match, semantic and structural signals, then rank connected evidence rather than isolated matches.</dd></div>
+    <div><dt>How do you trust a knowledge graph an LLM helped build?</dt><dd>Validate it against an explicit ontology and constraints before any agent reads from it.</dd></div>
+    <div><dt>How do you know an agent's change is correct?</dt><dd>Turn the requirement into executable scenarios, and let the compiler and tests — not the model — decide.</dd></div>
+  </dl></div></section><section class="row" id="research"><h2 class="row-label">Related research</h2><div class="row-body">
+  <p class="refs-note">Selected papers that provide technical background for this work. They are context, not evidence: I did not author them, and the Codet AI system was not an implementation of any one of them.</p>
+  <ol class="refs"><li><p class="ref-title"><a href="https://arxiv.org/abs/2405.14831">HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models</a></p><p class="ref-meta">Gutiérrez, Shu, Gu, Yasunaga, Su · NeurIPS 2024 · arXiv:2405.14831</p><dl><div><dt>Contribution</dt><dd>Builds a knowledge graph from a corpus and uses Personalized PageRank from query entities to retrieve evidence for multi-hop questions in a single step.</dd></div><div><dt>Problem</dt><dd>Multi-hop context selection: the evidence an agent needs is often several relations away from the query.</dd></div><div><dt>Connection</dt><dd>Informed how I thought about graph-propagated relevance (PageRank-style scoring) on top of lexical and semantic matching. A follow-up, <a href="https://arxiv.org/abs/2502.14802">HippoRAG 2 (arXiv:2502.14802, ICML 2025)</a>, extends the approach.</dd></div></dl></li><li><p class="ref-title"><a href="https://arxiv.org/abs/2509.01238">Towards Open-World Retrieval-Augmented Generation on Knowledge Graph: A Multi-Agent Collaboration Framework (AnchorRAG)</a></p><p class="ref-meta">Xu, Li, Tang, Wang, Zhang · 2025 · arXiv:2509.01238</p><dl><div><dt>Contribution</dt><dd>Proposes AnchorRAG: an agent predicts candidate anchor entities by matching query terms to graph nodes, and retriever agents explore multi-hop paths from each anchor in parallel.</dd></div><div><dt>Problem</dt><dd>Linking a natural-language request to the right starting points in a graph when there is no exact entity match.</dd></div><div><dt>Connection</dt><dd>Relevant to entity linking and out-of-vocabulary queries over a code knowledge graph; studied as background, not implemented as described.</dd></div></dl></li><li><p class="ref-title"><a href="https://www.jmlr.org/papers/v12/shervashidze11a.html">Weisfeiler-Lehman Graph Kernels</a></p><p class="ref-meta">Shervashidze, Schweitzer, van Leeuwen, Mehlhorn, Borgwardt · JMLR 12, 2011</p><dl><div><dt>Contribution</dt><dd>Graph similarity from iterative neighbourhood relabelling (the WL test), with runtime linear in the number of edges.</dd></div><div><dt>Problem</dt><dd>Comparing local structure: two code elements can play the same structural role without sharing names.</dd></div><div><dt>Connection</dt><dd>Basis for the Weisfeiler–Lehman structural representations I investigated for structure-aware relevance.</dd></div></dl></li><li><p class="ref-title"><a href="https://arxiv.org/abs/1705.08039">Poincaré Embeddings for Learning Hierarchical Representations</a></p><p class="ref-meta">Nickel, Kiela · 2017 · arXiv:1705.08039</p><dl><div><dt>Contribution</dt><dd>Embeds symbolic data in hyperbolic space (the Poincaré ball), representing hierarchies with far fewer dimensions than Euclidean embeddings.</dd></div><div><dt>Problem</dt><dd>Representing hierarchies — packages, modules, classes and ontology type trees.</dd></div><div><dt>Connection</dt><dd>Investigated as a way to encode hierarchical position alongside lexical and semantic signals.</dd></div></dl></li><li><p class="ref-title"><a href="https://arxiv.org/abs/2405.15793">SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering</a></p><p class="ref-meta">Yang, Jimenez, Wettig, Lieret, Yao, Narasimhan, Press · 2024 · arXiv:2405.15793</p><dl><div><dt>Contribution</dt><dd>Shows that the interface an agent uses to view files, navigate a repository and run tests strongly affects how well it solves real software tasks.</dd></div><div><dt>Problem</dt><dd>Designing the tools and feedback loop of a coding agent.</dd></div><div><dt>Connection</dt><dd>Context for the same design question in my work: give the agent structured repository access and deterministic checks rather than raw text.</dd></div></dl></li><li><p class="ref-title"><a href="https://arxiv.org/abs/2305.16291">Voyager: An Open-Ended Embodied Agent with Large Language Models</a></p><p class="ref-meta">Wang, Xie, Jiang, Mandlekar, Xiao, Zhu, Fan, Anandkumar · 2023 · arXiv:2305.16291</p><dl><div><dt>Contribution</dt><dd>An agent that accumulates a library of verified, executable skills from its own experience and reuses them on new tasks.</dd></div><div><dt>Problem</dt><dd>Turning successful agent behaviour into reusable procedures.</dd></div><div><dt>Connection</dt><dd>Conceptual background for the execution-event capture and skill extraction I explored.</dd></div></dl></li></ol></div></section><section class="row"><h2 class="row-label">What I took away</h2><div class="row-body">
+  <ul class="plain">
+    <li>Retrieval quality is a design problem across several signals, not a choice of embedding model.</li>
+    <li>Explicit structure — ontologies, typed queries, constraints — makes agent behaviour inspectable and testable.</li>
+    <li>The most reliable agents are the ones whose success is decided by deterministic checks.</li>
+    <li>Research ideas are most useful when adapted to a concrete failure mode, and evaluated against simpler baselines.</li>
+  </ul></div></section></div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>Muhammad Qasim · Applied AI Engineer · Karachi, Pakistan</p>
+    <p><a href="mailto:qasimmughal427@gmail.com">Email</a> <a href="https://github.com/qasimmughal03">GitHub</a> <a href="https://www.linkedin.com/in/muhammadqasim-914892211/">LinkedIn</a> <a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé</a></p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agents inside an editable media system — Muhammad Qasim</title>
+<meta name="description" content="How Clyflo lets models make creative decisions inside a real editor without unrestricted access to it.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#111113">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Agents inside an editable media system — Muhammad Qasim">
+<meta property="og:description" content="How Clyflo lets models make creative decisions inside a real editor without unrestricted access to it.">
+<link rel="canonical" href="https://qasimmughal03.github.io/work-agents.html">
+<meta property="og:url" content="https://qasimmughal03.github.io/work-agents.html">
+<meta property="og:image" content="https://qasimmughal03.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="name" href="index.html">Muhammad Qasim</a>
+    <nav aria-label="Main"><a href="work.html" aria-current="page">Work</a><a href="experience.html">Experience</a><a href="research.html">Research</a><a href="about.html">About</a><a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="case">
+<header class="page-head">
+  <p class="eyebrow"><a href="work.html">Clyflo</a> · Case study 2 of 5</p>
+  <h1 style="view-transition-name:case-agents">Agents inside an editable media system</h1>
+  <p class="lede">How Clyflo lets models make creative decisions inside a real editor without unrestricted access to it.</p>
+</header>
+<dl class="summary"><div><dt>Problem</dt><dd>Creative agents must act on a user’s clip, survive interruptions, and never turn a denied action into another attempt.</dd></div><div><dt>Approach</dt><dd>Specialist agents with typed tools, explicit budgets, durable checkpoints and deterministic command identities.</dd></div><div><dt>Shipped</dt><dd>Caption Director, Caption Design Agent, Music Agent and RAVA Director in the 30 October 2026 release.</dd></div></dl>
+<dl class="keyfacts"><div><dt>4</dt><dd>specialist agents with separate execution contracts</dd></div><div><dt>24 / 24</dt><dd>maximum tool steps / model calls in the caption runtime</dd></div><div><dt>16 / 18</dt><dd>worker defaults for steps / calls</dd></div><div><dt>8 / 8</dt><dd>Music Agent steps / calls</dd></div></dl>
+<nav class="toc" aria-label="In this case study"><ol><li><a href="#s1">Specialists, not one general agent</a></li><li><a href="#s2">Bounded execution and recovery</a></li><li><a href="#s3">Errors the model may repair — and errors it may not</a></li><li><a href="#s4">Waiting for transcription</a></li><li><a href="#s5">The Music Agent</a></li></ol></nav>
+<div class="prose"><section class="prose-section" id="s1"><h2>Specialists, not one general agent</h2>
+<p>Each agent owns one creative responsibility. The <b>Caption Director</b> works with the transcript and the clip’s editorial structure. The <b>Caption Design Agent</b> creates reusable visual themes. The <b>Music Agent</b> reasons about eligible recordings and musical windows. RAVA’s multimodal <b>Director</b> chooses subjects and framing from perception evidence.</p>
+<p>They share one principle: the model makes a bounded creative decision, and application code owns authorization, state changes, geometry, timing and persistence. Outputs pass through typed tools, compilers or candidate workflows before they touch the editor.</p>
+<p>Agents compose through public interfaces. When allowed, the Caption Director asks the Caption Design Agent for a bespoke theme and applies the result through the ordinary caption system — an editorial agent handing a design brief to a design agent.</p></section><section class="prose-section" id="s2"><h2>Bounded execution and recovery</h2>
+<p>The caption runtime allows at most 24 tool steps and 24 model calls; the worker runs with lower defaults of 16 and 18. Planned decisions and tool observations are stored in durable job checkpoints. If a worker is interrupted, it resumes by executing the checkpointed decision instead of asking the model for a new one.</p>
+<p>Every edit command gets a deterministic identity derived from the run, step, tool and arguments, so a replay resolves to the original authoring receipt rather than creating a second edit.</p></section><section class="prose-section" id="s3"><h2>Errors the model may repair — and errors it may not</h2>
+<p>Invalid tool arguments come back to the model as observations it can use to repair its next action. Authorization failures, concurrency conflicts and provider errors stay application failures. A creative repair loop must never treat a denied write as an invitation to try variations.</p></section><section class="prose-section" id="s4"><h2>Waiting for transcription</h2>
+<p>Speech recognition is a separate durable job. If the caption agent needs a transcript, it defers, releases its worker claim, and resumes with the result. It reuses aligned captions when they already exist. Completion requires a final inspection of the editor revision, and the worker verifies that an editable caption track actually exists.</p></section><section class="prose-section" id="s5"><h2>The Music Agent</h2>
+<p>An eight-step, eight-call loop reasons over the edited timeline and pinned track observations — beats, sections, energy, loudness — and chooses an eligible recording and musical moment, or decides no music fits. Code owns timing, gain, ducking and the compiled operations. The editor lets the creator audition Current against Proposed and accept an audio-only proposal through the authoring gateway. Automatic music in production stays gated by catalog eligibility.</p></section>
+<section class="prose-section"><h2>Implementation notes</h2><details><summary>A provider limit that reshaped the protocol</summary><div><p>Sending the union of every tool’s argument schema exceeded the structured-output limits of Gemini. The agent instead returns a small decision envelope with JSON-encoded arguments, which are validated against the chosen tool’s strict local model — manageable provider output, full validation kept.</p></div></details><details><summary>What the guarantees do not cover</summary><div><p>Checkpoints and command identities prevent duplicate edits; they do not make external model inference exactly-once across every crash boundary.</p></div></details></section>
+</div>
+<nav class="pager" aria-label="Case studies">
+  <a href="work-foundation.html"><span>Previous</span>A typed foundation for media, perception and composition</a>
+  <a href="work-captions.html"><span>Next</span>A language and compiler for caption motion</a>
+</nav>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>Muhammad Qasim · Applied AI Engineer · Karachi, Pakistan</p>
+    <p><a href="mailto:qasimmughal427@gmail.com">Email</a> <a href="https://github.com/qasimmughal03">GitHub</a> <a href="https://www.linkedin.com/in/muhammadqasim-914892211/">LinkedIn</a> <a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé</a></p>
+  </div>
+</footer>
+</body>
+</html>

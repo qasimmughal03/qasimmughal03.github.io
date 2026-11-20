@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A typed foundation for media, perception and composition — Muhammad Qasim</title>
+<meta name="description" content="The representation everything else in Clyflo stands on: a typed graph of media, perception and composition that humans, agents and renderers all read the same way.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#111113">
+<meta property="og:type" content="website">
+<meta property="og:title" content="A typed foundation for media, perception and composition — Muhammad Qasim">
+<meta property="og:description" content="The representation everything else in Clyflo stands on: a typed graph of media, perception and composition that humans, agents and renderers all read the same way.">
+<link rel="canonical" href="https://qasimmughal03.github.io/work-foundation.html">
+<meta property="og:url" content="https://qasimmughal03.github.io/work-foundation.html">
+<meta property="og:image" content="https://qasimmughal03.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="name" href="index.html">Muhammad Qasim</a>
+    <nav aria-label="Main"><a href="work.html" aria-current="page">Work</a><a href="experience.html">Experience</a><a href="research.html">Research</a><a href="about.html">About</a><a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+<article class="case">
+<header class="page-head">
+  <p class="eyebrow"><a href="work.html">Clyflo</a> · Case study 1 of 5</p>
+  <h1 style="view-transition-name:case-foundation">A typed foundation for media, perception and composition</h1>
+  <p class="lede">The representation everything else in Clyflo stands on: a typed graph of media, perception and composition that humans, agents and renderers all read the same way.</p>
+</header>
+<dl class="summary"><div><dt>Problem</dt><dd>Agents, editors and renderers need one inspectable model of a clip — where every framing decision and caption traces back to evidence, and missing knowledge is never mistaken for absence.</dd></div><div><dt>Approach</dt><dd>A pure-Python typed property-graph kernel, versioned domain schemas, three-valued validation with explicit coverage, pinned evidence references and an exact time model.</dd></div><div><dt>Shipped</dt><dd>The frozen foundation under the 30 October 2026 release: media 1.0.0, perception 2.0.0 and composition 2.0.0, with compiled fingerprints enforced at start-up.</dd></div></dl>
+<dl class="keyfacts"><div><dt>3</dt><dd>versioned domain schemas: media, perception, composition</dd></div><div><dt>3-valued</dt><dd>validation: valid, invalid or incomplete</dd></div><div><dt>11</dt><dd>compiled schema fingerprints enforced at registration</dd></div><div><dt>[start, end)</dt><dd>Decimal-second intervals with explicit clocks</dd></div></dl>
+<nav class="toc" aria-label="In this case study"><ol><li><a href="#s1">Why a graph, and why typed</a></li><li><a href="#s2">Partial knowledge is not absence</a></li><li><a href="#s3">Evidence you can follow</a></li><li><a href="#s4">Exact time, explicit clocks</a></li><li><a href="#s5">Versions that never change meaning</a></li><li><a href="#s6">Proposals versus accepted history</a></li></ol></nav>
+<div class="prose"><section class="prose-section" id="s1"><h2>Why a graph, and why typed</h2>
+<p>A clip is not a flat timeline. It is a composition of sequences and tracks — visual, audio, caption and graphics — whose placements, caption cues and tokens, and framing windows with crop trajectories all refer back to sources and to perception: who is speaking, where a face is, what a transcript says. I built Clyflo’s model of that as a <b>typed property graph</b>, so every relationship is explicit and checkable rather than buried in ad-hoc JSON.</p>
+<p>The kernel is deliberately small and pure: no storage, domain, network or application imports. It supports nominal node types with interfaces and at most one concrete base, typed edges with directional cardinalities and optional acyclicity, and closed, strictly typed properties — strict booleans, signed int64, finite floats, exact Decimals, enums, nested records and typed references. There is intentionally no query engine, reasoner or plugin loader: the foundation’s job is meaning and validation, not cleverness.</p></section><section class="prose-section" id="s2"><h2>Partial knowledge is not absence</h2>
+<p>The most important design decision is the validator’s third answer. A check returns <b>valid</b> only when every requested structural fact was established, <b>invalid</b> when a violation is observed — even in a partial view — and <b>incomplete</b> when the facts needed are unavailable. Coverage is an explicit assertion from the host: a partial view cannot prove a reference is absent, satisfy a lower cardinality bound, or show the absence of cycles.</p>
+<p>That matters for AI systems in particular. An agent reading a bounded window of a long clip must not conclude that a speaker “isn’t there” because it wasn’t loaded. Projections for the editor and agents are bounded by a read budget and report their coverage instead of silently truncating.</p></section><section class="prose-section" id="s3"><h2>Evidence you can follow</h2>
+<p>References identify resource, graph, scope, expected type at an exact schema version, and a snapshot pin; cross-domain references require a pinned, scoped, authorised resolver. That gives every creative decision a chain back to evidence: a <b>FramingTarget</b> is grounded in an evidence pin that resolves to a pinned perception observation of a visual track; a caption token derives from a pinned speech observation; a visual placement uses a pinned media source whose asset metadata and SHA-256 are retained in the accepted snapshot. Labels like <code>subject_1</code> are producer-local annotations, never identities.</p></section><section class="prose-section" id="s4"><h2>Exact time, explicit clocks</h2>
+<p>All extents are non-empty half-open intervals <code>[start, end)</code> in Decimal seconds, so arithmetic never drifts through floating point. Clocks carry a timescale for exact tick conversion; source clocks, the assembled timeline clock and producer clocks are distinct, and producer output needs a proven mapping before it can be reused against a source. Composition semantics enforce legal containment — a caption token only inside a cue, a crop trajectory only inside a framing window — and that every contained extent stays within its parent.</p></section><section class="prose-section" id="s5"><h2>Versions that never change meaning</h2>
+<p>Schemas have exact namespace and version identities and import exact versions. Each compiled schema has a fingerprint that includes imported meaning and ignores declaration order; registration checks the current fingerprints against a published ledger, so a published version cannot silently change. Older vocabularies stay as historical contracts and are converted explicitly — never modified in place.</p>
+<p>The same declarations generate the wire catalogue and TypeScript read contracts for the web editor; int64 and Decimal values travel as strings so JavaScript never loses precision.</p></section><section class="prose-section" id="s6"><h2>Proposals versus accepted history</h2>
+<p>Graph change sets carry a base snapshot and explicit existence preconditions, and apply atomically to a copy — but they are only proposals. Accepted history has exactly one authority, the authoring gateway, which appends revision N+1 against expected revision N. Agents can reason over the graph freely; they cannot write to it.</p></section>
+<section class="prose-section"><h2>Implementation notes</h2><details><summary>Where this came from</summary><div><p>The approach carries over from my knowledge-representation work at <a href="codet.html">Codet AI</a> — ontologies, typed relationships and constraint validation — applied to time-based media instead of code.</p></div></details><details><summary>Scope</summary><div><p>The kernel validates structure; it does not authorise storage access or prove evidence bytes exist — hosts supply truthful coverage and scoped resolvers. Legacy clips are adopted into unified history explicitly rather than assumed to have it.</p></div></details></section>
+</div>
+<nav class="pager" aria-label="Case studies">
+  <a href="work-platform.html"><span>Previous</span>Authoring, orchestration and infrastructure</a>
+  <a href="work-agents.html"><span>Next</span>Agents inside an editable media system</a>
+</nav>
+</article>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>Muhammad Qasim · Applied AI Engineer · Karachi, Pakistan</p>
+    <p><a href="mailto:qasimmughal427@gmail.com">Email</a> <a href="https://github.com/qasimmughal03">GitHub</a> <a href="https://www.linkedin.com/in/muhammadqasim-914892211/">LinkedIn</a> <a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé</a></p>
+  </div>
+</footer>
+</body>
+</html>

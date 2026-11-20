@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Research — Muhammad Qasim</title>
+<meta name="description" content="Independent research and engineering: retrieval evaluation, graph querying, voice agents and code intelligence.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#111113">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Research — Muhammad Qasim">
+<meta property="og:description" content="Independent research and engineering: retrieval evaluation, graph querying, voice agents and code intelligence.">
+<link rel="canonical" href="https://qasimmughal03.github.io/research.html">
+<meta property="og:url" content="https://qasimmughal03.github.io/research.html">
+<meta property="og:image" content="https://qasimmughal03.github.io/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+<link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="name" href="index.html">Muhammad Qasim</a>
+    <nav aria-label="Main"><a href="work.html">Work</a><a href="experience.html">Experience</a><a href="research.html" aria-current="page">Research</a><a href="about.html">About</a><a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+<header class="page-head">
+  <p class="eyebrow">Research &amp; engineering</p>
+  <h1>Research and projects</h1>
+  <p class="lede">Independent work on retrieval, graph querying and voice agents. I link source code where the repository is public.</p>
+</header>
+<div class="projects"><article class="project" id="enterprise-rag"><h2>Enterprise RAG evaluation</h2><p class="meta-line">Retrieval · PostgreSQL, pgvector, Python</p>
+<p>A retrieval service built entirely on PostgreSQL: HNSW vector search with pgvector, full-text search, reciprocal rank fusion and optional cross-encoder reranking, with tenant-level access control enforced in the database.</p>
+<p>I evaluated it on BEIR SciFact (all 300 test queries) with paired significance tests. Dense and hybrid retrieval performed similarly (nDCG@10 ≈ 0.70). Cross-encoder reranking added no statistically significant gain (p = 0.73) on CPU while raising tail latency by more than two orders of magnitude. The evaluation also exposed a full-text configuration that returned no results for most long queries, which I traced to conjunctive query parsing and fixed.</p><p class="project-link"><span class="muted">Private repository — walkthrough available on request.</span></p></article><article class="project" id="gql-core"><h2>GQL-Core</h2><p class="meta-line">Graph querying and reasoning · Python · alpha</p>
+<p>An embedded, in-memory property-graph engine with a Cypher-inspired query language, a typed query-plan API that LLM agents can build and validate without generating query text, and declarative inference rules (subtype, inverse, symmetric, transitive, composition) with provenance.</p><p class="project-link"><span class="muted">Private repository — walkthrough available on request.</span></p></article><article class="project" id="voice"><h2>Voice AI patient registration</h2><p class="meta-line">Voice agent · Vapi, Gemini, FastAPI, PostgreSQL</p>
+<p>A phone-callable intake agent that registers patients and books appointments through natural conversation, deployed with a public REST API. The agent’s tool calls and the REST API construct the same validation models, so a value the model gets wrong is rejected exactly as a bad API request would be.</p><p class="project-link"><a href="https://github.com/qasimmughal03/voice-ai-patient-registration">Source on GitHub</a></p></article><article class="project" id="gitdoc"><h2>GitDoc</h2><p class="meta-line">Code intelligence · Python, TypeScript</p>
+<p>Graph-first repository analysis that resolves symbols, imports and cross-file relationships across Python, TypeScript, JavaScript, Terraform/HCL and SQL, so code context comes from structure rather than text similarity alone.</p><p class="project-link"><span class="muted">Private repository — walkthrough available on request.</span></p></article><article class="project" id="anomaly"><h2>Medical image anomaly detection</h2><p class="meta-line">Final-year project · PyTorch</p>
+<p>A VQ-VAE-based detector for lung and breast imaging that combines global and local reconstruction error with latent-space Mahalanobis distance, and produces heatmaps to localise anomalies. Academic research; not a clinically validated system.</p><p class="project-link"><a href="https://github.com/qasimmughal03/anomaly_detector">Source on GitHub</a></p></article></div></div>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <p>Muhammad Qasim · Applied AI Engineer · Karachi, Pakistan</p>
+    <p><a href="mailto:qasimmughal427@gmail.com">Email</a> <a href="https://github.com/qasimmughal03">GitHub</a> <a href="https://www.linkedin.com/in/muhammadqasim-914892211/">LinkedIn</a> <a href="assets/Muhammad_Qasim_Resume_Final.pdf">Résumé</a></p>
+  </div>
+</footer>
+</body>
+</html>
