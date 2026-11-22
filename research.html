@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Research — Muhammad Qasim</title>
-<meta name="description" content="Independent research and engineering: retrieval evaluation, graph querying, voice agents and code intelligence.">
+<meta name="description" content="Independent research and engineering: graph querying, code intelligence, voice agents and medical-image anomaly detection.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#121417">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Research — Muhammad Qasim">
-<meta property="og:description" content="Independent research and engineering: retrieval evaluation, graph querying, voice agents and code intelligence.">
+<meta property="og:description" content="Independent research and engineering: graph querying, code intelligence, voice agents and medical-image anomaly detection.">
 <link rel="canonical" href="https://qasimmughal03.github.io/research.html">
 <meta property="og:url" content="https://qasimmughal03.github.io/research.html">
 <meta property="og:image" content="https://qasimmughal03.github.io/assets/og.jpg">
@@ -37,11 +37,9 @@
 <header class="page-head">
   <p class="eyebrow">Research &amp; engineering</p>
   <h1>Research and projects</h1>
-  <p class="lede">Independent work on retrieval, graph querying and voice agents. I link source code where the repository is public.</p>
+  <p class="lede">Independent work on graph querying, code intelligence, voice agents and medical imaging. I link source code where the repository is public.</p>
 </header>
-<div class="projects"><article class="project" id="enterprise-rag"><h2>Enterprise RAG evaluation</h2><p class="meta-line">Retrieval · PostgreSQL, pgvector, Python</p>
-<p>A retrieval service built entirely on PostgreSQL: HNSW vector search with pgvector, full-text search, reciprocal rank fusion and optional cross-encoder reranking, with tenant-level access control enforced in the database.</p>
-<p>I evaluated it on BEIR SciFact (all 300 test queries) with paired significance tests. Dense and hybrid retrieval performed similarly (nDCG@10 ≈ 0.70). Cross-encoder reranking added no statistically significant gain (p = 0.73) on CPU while raising tail latency by more than two orders of magnitude. The evaluation also exposed a full-text configuration that returned no results for most long queries, which I traced to conjunctive query parsing and fixed.</p><p class="project-link"><span class="muted">Private repository — walkthrough available on request.</span></p></article><article class="project" id="gql-core"><h2>GQL-Core</h2><p class="meta-line">Graph querying and reasoning · Python · alpha</p>
+<div class="projects"><article class="project" id="gql-core"><h2>GQL-Core</h2><p class="meta-line">Graph querying and reasoning · Python · alpha</p>
 <p>An embedded, in-memory property-graph engine with a Cypher-inspired query language, a typed query-plan API that LLM agents can build and validate without generating query text, and declarative inference rules (subtype, inverse, symmetric, transitive, composition) with provenance.</p><p class="project-link"><span class="muted">Private repository — walkthrough available on request.</span></p></article><article class="project" id="voice"><h2>Voice AI patient registration</h2><p class="meta-line">Voice agent · Vapi, Gemini, FastAPI, PostgreSQL</p>
 <p>A phone-callable intake agent that registers patients and books appointments through natural conversation, deployed with a public REST API. The agent’s tool calls and the REST API construct the same validation models, so a value the model gets wrong is rejected exactly as a bad API request would be.</p><p class="project-link"><a href="https://github.com/qasimmughal03/voice-ai-patient-registration">Source on GitHub</a></p></article><article class="project" id="gitdoc"><h2>GitDoc</h2><p class="meta-line">Code intelligence · Python, TypeScript</p>
 <p>Graph-first repository analysis that resolves symbols, imports and cross-file relationships across Python, TypeScript, JavaScript, Terraform/HCL and SQL, so code context comes from structure rather than text similarity alone.</p><p class="project-link"><span class="muted">Private repository — walkthrough available on request.</span></p></article><article class="project" id="anomaly"><h2>Medical image anomaly detection</h2><p class="meta-line">Final-year project · PyTorch</p>
