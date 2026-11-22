@@ -343,3 +343,16 @@ body { overflow-x: clip; }
   .opening-foot { animation-delay: .18s !important; }
 }
 @media (max-width: 860px) { .showcase-panel .arrow { display: inline; } }
+
+/* Clyflo chapters: problem -> decision -> evidence */
+.pde { display: grid; gap: 14px; margin: 0; }
+.pde div { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 16px; }
+.pde dt { font: 500 12px/1.9 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.pde dd { margin: 0; color: var(--body); max-width: 62ch; }
+@media (max-width: 560px) { .pde div { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+/* Ownership lines and reproducible artifacts */
+.ownership { font-size: .94em; color: var(--muted); }
+.ownership b { color: var(--body); font-weight: 500; }
+.repro { margin-top: 18px; }
+.repro pre { margin: 10px 0 12px; padding: 14px 16px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; overflow-x: auto; max-width: 100%; }
+.repro pre code { background: none; padding: 0; font-size: 13px; line-height: 1.7; white-space: pre; }
