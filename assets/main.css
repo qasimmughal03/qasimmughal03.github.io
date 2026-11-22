@@ -82,20 +82,6 @@ a:hover { text-decoration-color: var(--accent); }
 .scene-dek { max-width: 600px; font-size: 18px; color: var(--body); }
 
 /* Scene 02 — Clyflo showcase */
-.showcase-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); }
-.showcase-frame video, .showcase-frame img.media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.titlecard { position: absolute; inset: 0; display: grid; grid-template-rows: auto 1fr auto; padding: clamp(18px, 3vw, 36px);
-  background: radial-gradient(120% 90% at 18% 10%, #22262b 0%, #1b1e22 45%, #15171a 100%); }
-.titlecard-top { display: flex; align-items: center; gap: 12px; font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.titlecard-top img { width: 28px; height: 28px; opacity: .9; }
-.titlecard-main { align-self: center; }
-.titlecard-main .label { color: var(--accent); }
-.titlecard-main h3 { margin-top: 12px; font: 400 clamp(28px, 4.4vw, 60px)/1.04 var(--serif); letter-spacing: -.02em; color: var(--text); max-width: 16ch; }
-.titlecard-parts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0 24px;
-  border-top: 1px solid var(--line); }
-.titlecard-parts li { padding-top: 12px; font: 500 14px/1.35 var(--sans); color: var(--body); }
-.titlecard-parts span { display: block; margin-bottom: 4px; font: 500 12px var(--mono); letter-spacing: .06em; color: var(--accent); }
-@media (min-width: 561px) { .showcase-stack.stack-dup { display: none; } }
 
 .showcase-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
 .showcase-tabs button { padding: 20px 4px 18px 0; background: none; border: 0; border-top: 2px solid transparent; margin-top: -1px; text-align: left;
@@ -105,13 +91,9 @@ a:hover { text-decoration-color: var(--accent); }
 .showcase-tabs button[aria-selected="true"] { color: var(--text); border-top-color: var(--accent); }
 .showcase-tabs { display: none; }
 .js-showcase .showcase-tabs { display: grid; }
-.showcase-panel { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 16px 64px; padding-top: 28px; align-items: start; }
-.showcase-panel p { color: var(--body); max-width: 60ch; }
-.showcase-panel .arrow { justify-self: end; }
 .showcase-pane + .showcase-pane { margin-top: 56px; }      /* without JS the three panes stack */
 .js-showcase .showcase-pane + .showcase-pane { margin-top: 0; }
 .js-showcase .showcase-pane[hidden] { display: none; }
-.showcase-stack { margin-top: 18px; font: 500 13px/1.7 var(--mono); color: var(--muted); }
 
 /* Scene 03 — Codet AI */
 .editorial { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px 64px; }
@@ -175,11 +157,6 @@ a:hover { text-decoration-color: var(--accent); }
 .timeline b { color: var(--text); font-weight: 500; }
 .timeline p { color: var(--body); font-size: 15.5px; margin-top: 2px; }
 
-.media { margin: 0 0 48px; aspect-ratio: 16 / 9; border-radius: 4px; overflow: hidden; background: #000; }
-.media video { width: 100%; height: 100%; object-fit: cover; }
-.frame { position: relative; margin: 0 0 48px; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--bg-2); }
-.frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.frame figcaption { position: absolute; left: 16px; bottom: 12px; font-size: 13px; color: var(--muted); }
 
 /* Case studies */
 .summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; padding: 26px 0 32px; border-top: 1px solid var(--line-soft); }
@@ -253,8 +230,6 @@ details > div { padding-bottom: 16px; }
   @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
   .reveal-pending { opacity: 0; transform: translateY(16px); }
   .reveal-in { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
-  .showcase-frame img.media { transition: transform .6s var(--ease); }
-  .showcase-frame:hover img.media { transform: scale(1.015); }
   .js-showcase .showcase-pane:not([hidden]) { animation: fadein .3s var(--ease) both; }
   @keyframes fadein { from { opacity: 0; } }
   @view-transition { navigation: auto; }
@@ -268,9 +243,8 @@ details > div { padding-bottom: 16px; }
   .theme-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
 }
 @media (max-width: 860px) {
-  .scene-head, .editorial, .showcase-panel { grid-template-columns: minmax(0, 1fr); }
+  .scene-head, .editorial { grid-template-columns: minmax(0, 1fr); }
   .scene-head { gap: 16px; }
-  .showcase-panel .arrow { justify-self: start; }
   .row { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 34px; }
   .summary { grid-template-columns: minmax(0, 1fr); gap: 16px; }
 }
@@ -279,9 +253,6 @@ details > div { padding-bottom: 16px; }
   .js-showcase .showcase-tabs { grid-template-columns: minmax(0, 1fr); }
   .showcase-tabs button { padding: 14px 0 14px 14px; border-top: 0; border-bottom: 1px solid var(--line-soft); margin-top: 0; }
   .showcase-tabs button[aria-selected="true"] { box-shadow: inset 2px 0 0 var(--accent); }
-  .titlecard-top span, .titlecard-parts { display: none; }
-  .titlecard { grid-template-rows: auto 1fr; padding: 16px 18px; }
-  .titlecard-main h3 { font-size: 26px; margin-top: 6px; }
   .index li, .timeline li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .index p, .index .go { grid-column: 1; }
   .pager { grid-template-columns: 1fr; }
@@ -311,9 +282,7 @@ body { overflow-x: clip; }
 /* Clyflo directly follows the opening: wide frame, quieter header */
 .scene-clyflo { padding-top: clamp(48px, 6vw, 80px); }
 .wrap-wide { width: min(1440px, 100% - 2 * var(--gutter)); margin-inline: auto; }
-.scene-clyflo .showcase-panel, .scene-clyflo .showcase-tabs { width: min(var(--wrap), 100%); margin-inline: auto; }
 .scene-title, .contact h2 { font-family: var(--sans); font-weight: 600; letter-spacing: -.035em; }
-.titlecard-main h3 { font: 600 clamp(26px, 3.6vw, 52px)/1.05 var(--sans); letter-spacing: -.03em; }
 
 /* Header: compact menu on small screens */
 .menu-btn { display: none; font: 500 14px var(--sans); color: var(--text); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
@@ -342,7 +311,6 @@ body { overflow-x: clip; }
   .opening-role { animation-delay: .08s !important; }
   .opening-foot { animation-delay: .18s !important; }
 }
-@media (max-width: 860px) { .showcase-panel .arrow { display: inline; } }
 
 /* Clyflo chapters: problem -> decision -> evidence */
 .pde { display: grid; gap: 14px; margin: 0; }
@@ -356,3 +324,15 @@ body { overflow-x: clip; }
 .repro { margin-top: 18px; }
 .repro pre { margin: 10px 0 12px; padding: 14px 16px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; overflow-x: auto; max-width: 100%; }
 .repro pre code { background: none; padding: 0; font-size: 13px; line-height: 1.7; white-space: pre; }
+
+/* Clyflo chapters (text only): what it covers | problem -> decision -> evidence */
+.chapter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); gap: 32px 72px; padding-top: 36px; align-items: start; }
+.chapter-head h3 { font: 600 22px/1.2 var(--sans); color: var(--text); margin-bottom: 16px; }
+.js-showcase .chapter-head h3 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.chapter-parts { list-style: none; margin: 0; padding: 0; }
+.chapter-parts li { display: grid; grid-template-columns: 34px minmax(0, 1fr); padding: 12px 0; border-top: 1px solid var(--line-soft); font: 500 15px/1.4 var(--sans); color: var(--text); }
+.chapter-parts li:last-child { border-bottom: 1px solid var(--line-soft); }
+.chapter-parts span { font: 500 12px/1.6 var(--mono); color: var(--accent); }
+.chapter-body .arrow { margin-top: 24px; }
+@media (max-width: 860px) { .chapter { grid-template-columns: minmax(0, 1fr); padding-top: 24px; } }
+.showcase-tabs button { display: flex; flex-direction: column; justify-content: flex-start; }
